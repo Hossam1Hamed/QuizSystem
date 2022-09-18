@@ -32,7 +32,7 @@
 <script>
     $(window).on('load',function(){
         setTimeout(function(){
-            
-        },1200000)
+            Response.Expires = 0;
+        },2000)
     })
 </script>
