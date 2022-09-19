@@ -25,9 +25,9 @@ class QuizController extends Controller
     }
     public function sendResult(Request $request){
         $user = $this->userRepo->find($request->id , $request);
-        
+        $this->sendMailToTeacher($user,$user->name);
         $result = $this->correct_quiz($request);
-        $this->sendMail($user);
+        $this->sendMailToStudent($user,$result);
         session()->flash('check your email to get result');
         return redirect('/home');
     }
