@@ -2,26 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\QuizRepositoryInterface;
+use App\Http\Requests\Web\Quiz\AddQuizRequest;
+use App\Interfaces\QuestionRepositoryInterface;
 use App\Interfaces\UserRepositoryInterface;
+use App\Interfaces\QuizRepositoryInterface;
+use App\Repositories\QuizRepository;
 use Illuminate\Http\Request;
 use App\Traits\HelperTrait;
 
 class QuizController extends Controller
 {
     use HelperTrait;
-    private $quizRepo;
+    private $questionRepo;
     private $userRepo;
+    private $quizRepo;
     
-    public function __construct(QuizRepositoryInterface $quizRepoInterface,UserRepositoryInterface $userRepoInterface)
+    public function __construct(QuestionRepositoryInterface $questionRepoInterface,UserRepositoryInterface $userRepoInterface,QuizRepositoryInterface $quizRepoInterface)
     {
-        $this->quizRepo = $quizRepoInterface;
+        $this->questionRepo = $questionRepoInterface;
         $this->userRepo = $userRepoInterface;
+        $this->quizRepo = $quizRepoInterface;
     }
     public function index(){
-        $questions = $this->quizRepo->getMainQuestions();
+        $questions = $this->questionRepo->getMainQuestions();
         
         return view('web.pages.quiz.index',compact('questions'));
+    }
+    public function create(){
+        return view('web.pages.quiz.create');
+    }
+    public function store(AddQuizRequest $request){
+        $quiz = $this->quizRepo->create($request->all());
+        if($quiz){
+            return response()->json([
+                'status' => true,
+                'msg'    => 'Quiz saved successfully',
+            ]);
+        }else{
+            return response()->json([
+                'status' => false,
+                'msg'    => 'Quiz unsaved unfortionatly , try again',
+            ]);
+        }
     }
     public function sendResult(Request $request){
         $user = $this->userRepo->find($request->id , $request);

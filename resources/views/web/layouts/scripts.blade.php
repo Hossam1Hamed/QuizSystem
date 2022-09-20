@@ -36,3 +36,34 @@
         },2000)
     })
 </script>
+<script>
+    $(document).ready(function(){
+        $('body').on('click', '#save', function(e) {
+        
+        e.preventDefault();
+        var formData = new FormData($('#create-quiz')[0]);
+        $.ajax({
+            type: 'POST',
+            url: "{{ route('quiz.store')}}",
+            data: formData,
+
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function(data) {
+                if (data.status == true) {
+                    $('#success_msg').show();
+                }
+            },
+            error: function(reject) {
+                var response = $.parseJSON(reject.responseText);
+                $.each(response.errors, function(key, val) {
+                    $("#" + key).text(val[0]);
+
+                });
+            },
+        });
+    });
+    });
+   
+</script>

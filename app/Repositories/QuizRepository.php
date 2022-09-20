@@ -3,20 +3,14 @@
 namespace App\Repositories;
 
 use App\Interfaces\QuizRepositoryInterface;
-use App\Models\Question;
+use app\Repositories\BaseRepository;
+use App\Models\Quiz;
 
 class QuizRepository extends BaseRepository implements QuizRepositoryInterface
 {
-    public function __construct(Question $model)
+    public function __construct(Quiz $model)
     {
-        parent::__construct($model);   
+        parent::__construct($model);
     }
 
-    function getMainQuestions(){
-        $questions = Question::where('parent_id', null)->with('choices')->get();
-        return $questions;
-    }
-    public function getChoicesByQuestion($id){
-        return "jsuh";
-    }
 }
