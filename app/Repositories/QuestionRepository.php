@@ -19,4 +19,17 @@ class QuestionRepository extends BaseRepository implements QuestionRepositoryInt
     public function getChoicesByQuestion($id){
         return "jsuh";
     }
+    public function getQuestionsWithCategories()
+    {
+        $questions = $this->model->with('category')->get();
+        return $questions;
+    }
+    public function findQuestion($id)
+    {
+        return $this->model->where('id',$id)->with('category')->get();
+    }
+    public function destroyQuestion($id)
+    {
+        return $this->model->destroy($id);
+    }
 }

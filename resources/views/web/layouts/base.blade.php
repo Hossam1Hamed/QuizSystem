@@ -13,6 +13,7 @@
         @include('web.layouts.nav')
 
         <div class="container-fluid py-4">
+            
             @if(Session::has('success'))
 
             <div class="alert alert-success text-center" id="alert">

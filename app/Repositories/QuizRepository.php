@@ -3,8 +3,9 @@
 namespace App\Repositories;
 
 use App\Interfaces\QuizRepositoryInterface;
-use app\Repositories\BaseRepository;
+use App\Repositories\BaseRepository;
 use App\Models\Quiz;
+use Illuminate\Support\Facades\DB;
 
 class QuizRepository extends BaseRepository implements QuizRepositoryInterface
 {
@@ -12,5 +13,9 @@ class QuizRepository extends BaseRepository implements QuizRepositoryInterface
     {
         parent::__construct($model);
     }
-
+    public function getLastQuiz()
+    {
+        $quiz = DB::table('quizzes')->latest()->first();
+        return $quiz;
+    }
 }

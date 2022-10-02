@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Option;
 use App\Models\Question;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             StudentSeeder::class,
+            CategorySeeder::class,
             QuestionSeeder::class,
+            OptionSeeder::class,
+            
         ]);
         // \App\Models\User::factory(10)->create();
 

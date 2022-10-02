@@ -33,17 +33,7 @@ class QuizController extends Controller
     }
     public function store(AddQuizRequest $request){
         $quiz = $this->quizRepo->create($request->all());
-        if($quiz){
-            return response()->json([
-                'status' => true,
-                'msg'    => 'Quiz saved successfully',
-            ]);
-        }else{
-            return response()->json([
-                'status' => false,
-                'msg'    => 'Quiz unsaved unfortionatly , try again',
-            ]);
-        }
+        return redirect()->route('question.create')->with('success','quiz added succeffuly ... please fill your questions');
     }
     public function sendResult(Request $request){
         $user = $this->userRepo->find($request->id , $request);

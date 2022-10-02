@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
-    protected $fillable = ['text' , 'parent_id'];
+    protected $fillable = ['question_text' , 'category_id','created_at','updated_at'];
 
 
-    public function question()
+    public function category()
     {
-        return $this->belongsTo(Question::class, 'parent_id', 'id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
-
-    public function choices()
+    public function options()
     {
-        return $this->hasMany(Question::class, 'parent_id');
+        return $this->hasMany(Option::class , 'question_id' , 'id');
     }
+    
 }

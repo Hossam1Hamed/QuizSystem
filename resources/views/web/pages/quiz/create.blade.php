@@ -10,11 +10,11 @@
 
                 <div class="card-body">
 
-                    <form id="create-quiz" method="post">
+                    <form id="" action="{{route('quiz.store')}}" method="post">
                         @csrf
                         @include('web.pages.quiz.partials.form')
                     
-                    <button id="save" class="btn btn-primary">Submit</button>
+                    <button id="" class="btn btn-primary">Submit</button>
                 </form>
 
             </div>
