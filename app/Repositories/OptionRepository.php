@@ -20,4 +20,8 @@ class OptionRepository extends BaseRepository implements OptionRepositoryInterfa
     {
         return $this->model->where('id',$id)->with('question')->get();
     }
+    public function getOptionsAnswers($attributes)
+    {
+        return $this->model->find($attributes);
+    }
 }

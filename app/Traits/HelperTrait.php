@@ -14,4 +14,9 @@ trait HelperTrait
     public function sendMailToTeacher($user,$name){
         Mail::to($user)->send(new TeacherMail($name));
     }
+
+    public function makePdf()
+    {
+        
+    }
 }

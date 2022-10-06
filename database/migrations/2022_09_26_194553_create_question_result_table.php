@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('question_result_pivot', function (Blueprint $table) {
+        Schema::create('question_result', function (Blueprint $table) {
             $table->unsignedBigInteger('result_id');
 
             $table->foreign('result_id', 'result_id_fk_773767')->references('id')->on('results')->onDelete('cascade');

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Result extends Model
 {
     use HasFactory;
+    protected $fillable=['total_points','user_id','created_at','updated_at'];
 
     public function user()
     {

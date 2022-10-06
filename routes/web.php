@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\ResultController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,4 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('categories',CategoriesController::class);
     Route::resource('questions',App\Http\Controllers\Dashboard\QuestionController::class);
     Route::resource('options',OptionController::class);
+    Route::resource('results',ResultController::class);
+    Route::get('result/{result_id}', [ResultController::class,'show'])->name('results.show');
+    Route::get('send/{result_id}', [ResultController::class,'send'])->name('results.send');
 });

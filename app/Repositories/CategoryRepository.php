@@ -11,9 +11,14 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         parent::__construct($model);
     }
-    public function getAllCatsWithQuestions()
+    public function getAllCatsWithQuestionsWithOptions()
     {
-        
+        return $this->model->with(['questions'=>function($query){
+            $query->inRandomOrder()
+                ->with(['options' => function($query){
+                    $query->inRandomOrder();
+                }]);
+        }])->whereHas('questions')->get();
     }
     public function findCategory($id)
     {

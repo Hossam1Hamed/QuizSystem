@@ -121,7 +121,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY',"lj7qJQJhfVvm36IXmueBs6ztlVb3hueELeccRPjDn0o"),
 
     'cipher' => 'AES-256-CBC',
 
@@ -196,6 +196,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\RepositoryServiceProvider::class,
+        // niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
+        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
     ],
 
     /*
@@ -211,6 +213,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        // 'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class,
+        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
     ])->toArray(),
 
 ];

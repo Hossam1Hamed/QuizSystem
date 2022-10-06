@@ -11,7 +11,10 @@ class QuestionRepository extends BaseRepository implements QuestionRepositoryInt
     {
         parent::__construct($model);   
     }
-
+    public function getQuestionsWithOptions()
+    {
+        return $this->model->with('options')->get();
+    }
     function getMainQuestions(){
         $questions = Question::where('parent_id', null)->with('choices')->get();
         return $questions;

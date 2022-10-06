@@ -7,6 +7,7 @@
             $.ajax({
                 type: 'POST',
                 url: "{{ route('send.result')}}",
+                
                 data: formData,
 
                 processData: false,
