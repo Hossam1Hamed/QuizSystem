@@ -12,7 +12,7 @@
             </a>
         </div>
         <nav aria-label="breadcrumb">
-            <a href="{{route('home')}}"><h6 class="font-weight-bolder mb-0 mx-3">Jaadara Quiz System</h6></a>
+            <a href="{{route('home')}}"><h6 class="font-weight-bolder mb-0 mx-3">Quiz System</h6></a>
         </nav>
 
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">

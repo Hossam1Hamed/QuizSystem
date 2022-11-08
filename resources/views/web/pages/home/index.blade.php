@@ -1,4 +1,4 @@
-@extends('web.layouts.base')
+@extends('web.layouts.webBase')
 
 @section('content')
 
